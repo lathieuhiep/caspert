@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Electrolux SansVN';
+    src: url('ElectroluxSansVN-Bold.woff2') format('woff2'),
+        url('ElectroluxSansVN-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux SansVN';
+    src: url('ElectroluxSansVN-DemiBold.woff2') format('woff2'),
+        url('ElectroluxSansVN-DemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux SansVN';
+    src: url('ElectroluxSansVN-Regular.woff2') format('woff2'),
+        url('ElectroluxSansVN-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

@@ -1,15 +1,17 @@
-    </main><!-- close .sticky-footer -->
+    </main><!-- close .page-content -->
 
     <?php
     if ( !is_404() ) :
         get_template_part('template-parts/footer/inc', 'layout');
      endif;
      ?>
-</div><!-- .main-warp -->
+</div><!-- .page-wrapper -->
 
 <?php
-get_template_part('template-parts/components/inc', 'loading');
-get_template_part('template-parts/components/inc', 'back-top');
+if ( !is_404() ) :
+    get_template_part('template-parts/popup/inc', 'select-area');
+    get_template_part('template-parts/popup/inc', 'select-policy');
+endif;
 
 wp_footer();
 ?>

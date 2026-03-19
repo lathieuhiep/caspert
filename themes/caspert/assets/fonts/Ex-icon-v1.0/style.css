@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'Ex-icon';
+  src:
+    url('fonts/Ex-icon.ttf?7jh8cw') format('truetype'),
+    url('fonts/Ex-icon.woff?7jh8cw') format('woff'),
+    url('fonts/Ex-icon.svg?7jh8cw#Ex-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ex-"], [class*=" ex-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Ex-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ex-unmute:before {
+  content: "\e91d";
+}
+.ex-mute:before {
+  content: "\e91e";
+}
+.ex-pause:before {
+  content: "\e91f";
+}
+.ex-play:before {
+  content: "\e920";
+}
+.ex-filter:before {
+  content: "\e91c";
+}
+.ex-close:before {
+  content: "\e91b";
+}
+.ex-marker-2:before {
+  content: "\e915";
+}
+.ex-phone-2:before {
+  content: "\e916";
+}
+.ex-download:before {
+  content: "\e917";
+}
+.ex-search-2:before {
+  content: "\e918";
+}
+.ex-paper:before {
+  content: "\e919";
+}
+.ex-clock:before {
+  content: "\e91a";
+}
+.ex-help:before {
+  content: "\e914";
+}
+.ex-star:before {
+  content: "\e90a";
+}
+.ex-facebook:before {
+  content: "\e909";
+}
+.ex-arrow-circle-left:before {
+  content: "\e900";
+}
+.ex-arrow-circle-right:before {
+  content: "\e901";
+}
+.ex-arrowLong-left:before {
+  content: "\e902";
+}
+.ex-arrowLong-right:before {
+  content: "\e903";
+}
+.ex-caret-down:before {
+  content: "\e904";
+}
+.ex-caret-left:before {
+  content: "\e905";
+}
+.ex-caret-right:before {
+  content: "\e906";
+}
+.ex-caret-up:before {
+  content: "\e907";
+}
+.ex-check:before {
+  content: "\e908";
+}
+.ex-instagram:before {
+  content: "\e90b";
+}
+.ex-marker:before {
+  content: "\e90c";
+}
+.ex-minus:before {
+  content: "\e90d";
+}
+.ex-phone:before {
+  content: "\e90e";
+}
+.ex-plus:before {
+  content: "\e90f";
+}
+.ex-search:before {
+  content: "\e910";
+}
+.ex-tiktok:before {
+  content: "\e911";
+}
+.ex-youtube:before {
+  content: "\e912";
+}
+.ex-zalo:before {
+  content: "\e913";
+}

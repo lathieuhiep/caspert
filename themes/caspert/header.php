@@ -10,11 +10,12 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div class="main-warp">
+<div class="page-wrapper">
     <?php
     if ( !is_404() ) :
-        get_template_part('template-parts/header/inc', 'layout');
+        get_template_part('template-parts/header/inc', 'nav');
+        get_template_part('template-parts/header/inc', 'nav-mobile');
     endif;
     ?>
-    <!-- open .sticky-footer -->
-    <main class="sticky-footer">
+    <!-- open .page-content -->
+    <main class="page-content">
