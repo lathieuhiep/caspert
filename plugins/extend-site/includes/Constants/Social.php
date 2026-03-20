@@ -9,12 +9,11 @@ final class Social
     public static function list(): array
     {
         return [
-            'facebook-f' => 'Facebook',
-            'twitter' => 'Twitter',
-            'linkedin-in' => 'LinkedIn',
+            'facebook' => 'Facebook',
             'youtube' => 'YouTube',
             'instagram' => 'Instagram',
             'tiktok' => 'TikTok',
+            'zalo' => 'Zalo',
         ];
     }
 }

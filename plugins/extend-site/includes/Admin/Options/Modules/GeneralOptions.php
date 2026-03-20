@@ -19,6 +19,7 @@ class GeneralOptions extends OptionBase implements OptionIF
     // key options
     private const PREFIX = 'es_opt_general_';
     private const LOGO = self::PREFIX . 'logo';
+    private const LOGO_FOOTER = self::PREFIX . 'logo_footer';
     private const ENABLE_LOADING = self::PREFIX . 'enable_loading';
     private const LOADING_IMAGE = self::PREFIX . 'loading_image';
     private const BACK_TO_TOP = self::PREFIX . 'back_to_top';
@@ -32,8 +33,10 @@ class GeneralOptions extends OptionBase implements OptionIF
         return [
             // Logo & Branding
             Field::make('image', self::LOGO, esc_html__('Logo', 'extend-site'))
-                ->set_value_type('id')
-                ->set_help_text('Select your logo'),
+                ->set_value_type('id'),
+
+            Field::make('image', self::LOGO_FOOTER, esc_html__('Logo Footer', 'extend-site'))
+                ->set_value_type('id'),
 
             // -----------------------------
             // Loading Page
@@ -69,6 +72,14 @@ class GeneralOptions extends OptionBase implements OptionIF
         return $id ?: $default;
     }
 
+    // get logo
+    public static function get_logo_footer_id($default = null)
+    {
+        $id = self::get(self::LOGO_FOOTER);
+
+        return $id ?: $default;
+    }
+
     // get display loading enabled
     public static function get_loading_enabled(): bool
     {
@@ -94,6 +105,7 @@ class GeneralOptions extends OptionBase implements OptionIF
     {
         return [
             self::LOGO => self::get_logo_id(),
+            self::LOGO_FOOTER => self::get_logo_footer_id(),
             self::ENABLE_LOADING => self::get_loading_enabled(),
             self::LOADING_IMAGE => self::get_loading_image_id(),
             self::BACK_TO_TOP => self::get_back_to_top_enabled(),

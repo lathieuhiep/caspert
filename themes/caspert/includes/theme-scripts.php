@@ -44,8 +44,8 @@ add_action('wp_enqueue_scripts', 'caspert_custom_enqueue_jquery_first', 1);
 // load front-end styles
 function caspert_front_end_scripts(): void
 {
-    // current-device
-    wp_enqueue_script('current-device', get_theme_file_uri('/assets/libs/device-js/current-device.min.js'), array('jquery'), '0.10.1', true);
+    //
+    wp_enqueue_style('ex-icon', get_theme_file_uri('/assets/fonts/Ex-icon-v1.0/style.css'), array(), caspert_get_version_theme());
 
     // swiper
     wp_enqueue_style('swiper', get_theme_file_uri('/assets/libs/swiper/swiper.min.css'), array(), '11.0.6');
@@ -71,6 +71,9 @@ function caspert_front_end_scripts(): void
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
+
+    // current-device
+    wp_enqueue_script('current-device', get_theme_file_uri('/assets/libs/device-js/current-device.min.js'), array('jquery'), '0.10.1', true);
 
     // wow
     wp_enqueue_script('wow', get_theme_file_uri('/assets/libs/wow/wow.min.js'), array('jquery'), caspert_get_version_theme(), true);

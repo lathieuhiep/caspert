@@ -1,91 +1,110 @@
+<?php
+
+use ExtendSite\Admin\Options\Modules\ContactOptions;
+use ExtendSite\Admin\Options\Modules\FooterOptions;
+use ExtendSite\Admin\Options\Modules\GeneralOptions;
+
+$opt_number_columns = caspert_get_footer_sidebar_columns_count();
+$logo_footer = caspert_opt(GeneralOptions::class)::get_logo_footer_id() ?? '';
+$hotline = caspert_opt(ContactOptions::class)::get_hotline() ?? '1800 6644';
+
+// check sidebar active
+$has_footer_sidebar = false;
+for ( $i = 1; $i <= 4; $i++ ) {
+    if ( is_active_sidebar( PREFIX_SIDEBAR_FOOTER_COLUMN . $i ) ) {
+        $has_footer_sidebar = true;
+        break;
+    }
+}
+?>
 <footer class="footer">
-    <div class="footer__listWrap">
-        <div class="container">
-            <div class="footer__list">
-                <div class="row">
-                    <div class="col-md-6 col-xl-3">
-                        <div class="footer__menu mb-accordion">
-                            <h4 class="f-title">GIẢI PHÁP ĐIỀU HÒA <br>KHÔNG KHÍ</h4>
-                            <div class="f-content">
-                                <ul>
-                                    <li><a href="#">Điều hoà inverter</a></li>
-                                    <li><a href="#">Điều hoà non inverter</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="footer__menu mb-accordion">
-                            <h4 class="f-title">HỖ TRỢ KHÁCH HÀNG</h4>
-                            <div class="f-content">
-                                <ul>
-                                    <li><a href="#">Liên hệ chúng tôi</a></li>
-                                    <li><a href="#">Tra cứu bảo hành</a></li>
-                                    <li><a href="#">Chính sách bảo hành</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="footer__menu mb-accordion footer__gt">
-                            <h4 class="f-title">GIỚI THIỆU</h4>
-                            <div class="f-content">
-                                <ul>
-                                    <li><a href="#">Thương hiệu hàng đầu tại châu Âu</a></li>
-                                    <li><a href="#">Nhà thiết kế cải tiến giàu ý tưởng</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3">
-                        <div class="footer__menu footer__mua">
-                            <h4 class="f-title"><a href="muaodau.html">MUA Ở ĐÂU</a></h4>
-                        </div>
+    <?php if ( $has_footer_sidebar ) : ?>
+        <div class="footer__listWrap">
+            <div class="container">
+                <div class="footer__list">
+                    <div class="row">
+                        <?php
+                        for ( $i = 0; $i < $opt_number_columns; $i++ ) :
+                            $j = $i + 1;
+                            $cols = caspert_opt(FooterOptions::class)::get_footer_sidebar_settings($j) ?? [];
+
+                            if ( empty( $cols ) ) {
+                                $cols = [
+                                    'sm' => 12,
+                                    'md' => 6,
+                                    'lg' => 3,
+                                    'xl' => 3
+                                ];
+                            }
+
+                            $classes = sprintf(
+                                'col-12 col-sm-%s col-md-%s col-lg-%s col-xl-%s',
+                                $cols['sm'],
+                                $cols['md'],
+                                $cols['lg'],
+                                $cols['xl']
+                            );
+
+                            if ( is_active_sidebar( PREFIX_SIDEBAR_FOOTER_COLUMN . $j ) ):
+                            ?>
+                                <div class="<?php echo esc_attr( $classes ); ?>">
+                                    <?php dynamic_sidebar( PREFIX_SIDEBAR_FOOTER_COLUMN . $j ); ?>
+                                </div>
+                            <?php
+                            endif;
+                        endfor;
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endif; ?>
+
     <div class="footer__socialWrap">
         <div class="container">
             <div class="footer__social">
-                <a href="#"><i class="ex-facebook"></i></a>
-                <!-- <a href="#"><i class="ex-youtube"></i></a>
-                <a href="#"><i class="ex-instagram"></i></a>
-                <a href="#"><i class="ex-tiktok"></i></a>
-                <a href="#"><i class="ex-zalo"></i></a> -->
+                <?php caspert_get_social_url(); ?>
             </div>
-            <!-- <p><a href="https://electroluxgroup.com" target="_blank">Electroluxgroup.com</a></p> -->
         </div>
     </div>
+
     <div class="footer__foot">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-xl-5 order-md-2">
                     <div class="footer__info">
-                        <ul>
-                            <li><a href="#">Các điều khoản sử dụng trang web</a></li>
-                            <li><a href="#">Chính sách bảo mật thông tin</a></li>
-                            <li><a href="#">Hướng dẫn sử dụng Cookie</a></li>
-                            <li><a href="#">Bản đồ trang</a></li>
-                        </ul>
-                        <div class="f-logo"><img src="assets/img/logo-bocongthuong.png" alt=""></div>
+                        <?php
+                        if ( has_nav_menu( 'footer-menu' ) ) :
+                            wp_nav_menu( array(
+                                'theme_location' => 'footer-menu',
+                                'container' => false,
+                            ) );
+                        else:
+                            ?>
+                            <ul>
+                                <li>
+                                    <a href="<?php echo get_admin_url() . '/nav-menus.php'; ?>">
+                                        <?php esc_html_e( 'Thêm Menu', 'basictheme' ); ?>
+                                    </a>
+                                </li>
+                            </ul>
+                        <?php endif; ?>
+
+                        <?php if ( !empty( $logo_footer ) ) : ?>
+                        <div class="f-logo">
+                            <?php echo wp_get_attachment_image( $logo_footer, 'medium' ); ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
+
                 <div class="col-md-6 col-xl-7 order-md-1">
                     <div class="footer__text">
-                        <p>Bản quyền thuộc Electrolux và Casper năm 2026 - Bảo lưu mọi quyền
-                            <br>
-                            Công ty TNHH Electrolux Việt Nam
-                            <br>
-                            GPKD: 0100831110/KD-0364, do Sở Công Thương Hà Nội cấp ngày 16/10/2020
-                            <br>
-                            CNĐKDN: 0100831110, do Sở kế hoạch & đầu tư Hà Nội cấp ngày 08/11/2019
-                            <br>
-                            Địa chỉ: Tầng 1 & 15 tòa nhà Geleximco, số 36 Hoàng Cầu, phường Ô Chợ Dừa, quận Đống Đa, Hà Nội
-                            <br>
-                            Điện thoại:+84-2839105465
-                        </p>
+                        <?php
+                        if ( is_active_sidebar( PREFIX_SIDEBAR_FOOTER_COPYRIGHT ) ) :
+                            dynamic_sidebar( PREFIX_SIDEBAR_FOOTER_COPYRIGHT );
+                        endif;
+                        ?>
                     </div>
                 </div>
             </div>
@@ -93,7 +112,7 @@
     </div>
 </footer>
 
-<a href="#" class="phoneFixed-icon">
+<a href="tel:<?php echo esc_attr( caspert_preg_replace_ony_number($hotline) ); ?>" class="phoneFixed-icon">
     <span><i class="ex-phone"></i></span>
-    <p>1800 6644</p>
+    <p><?php echo esc_html( $hotline ); ?></p>
 </a>

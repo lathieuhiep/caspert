@@ -9,8 +9,12 @@ function caspert_get_version_theme(): string
 
 // Empty Option Proxy Class
 if (!class_exists('EmptyOptionProxy')) {
-    class EmptyOptionProxy {
-        public static function __callStatic($name, $args) { return null; }
+    class EmptyOptionProxy
+    {
+        public static function __callStatic($name, $args)
+        {
+            return null;
+        }
     }
 }
 
@@ -119,9 +123,9 @@ function caspert_comments($caspert_comment, $caspert_comment_args, $caspert_comm
         <?php edit_comment_link(esc_html__('Sửa ', 'caspert')); ?>
 
         <?php comment_reply_link(array_merge($caspert_comment_args, array(
-            'add_below' => $caspert_comment_add_below,
-            'depth' => $caspert_comment_depth,
-            'max_depth' => $caspert_comment_args['max_depth']
+                'add_below' => $caspert_comment_add_below,
+                'depth' => $caspert_comment_depth,
+                'max_depth' => $caspert_comment_args['max_depth']
         ))); ?>
     </div>
 
@@ -163,11 +167,11 @@ function caspert_comment_nav(): void
 function caspert_pagination(): void
 {
     the_posts_pagination(array(
-        'type' => 'list',
-        'mid_size' => 2,
-        'prev_text' => esc_html__('Trước', 'caspert'),
-        'next_text' => esc_html__('Sau', 'caspert'),
-        'screen_reader_text' => '&nbsp;',
+            'type' => 'list',
+            'mid_size' => 2,
+            'prev_text' => esc_html__('Trước', 'caspert'),
+            'next_text' => esc_html__('Sau', 'caspert'),
+            'screen_reader_text' => '&nbsp;',
     ));
 }
 
@@ -175,11 +179,11 @@ function caspert_pagination(): void
 function caspert_paging_nav_query($query): void
 {
     $args = array(
-        'prev_text' => esc_html__(' Trước', 'caspert'),
-        'next_text' => esc_html__('Sau', 'caspert'),
-        'current' => max(1, get_query_var('paged')),
-        'total' => $query->max_num_pages,
-        'type' => 'list',
+            'prev_text' => esc_html__(' Trước', 'caspert'),
+            'next_text' => esc_html__('Sau', 'caspert'),
+            'current' => max(1, get_query_var('paged')),
+            'total' => $query->max_num_pages,
+            'type' => 'list',
     );
 
     $paginate_links = paginate_links($args);
@@ -248,10 +252,10 @@ function caspert_post_meta(): void
 function caspert_link_page(): void
 {
     wp_link_pages(array(
-        'before' => '<div class="page-links">' . esc_html__('Trang:', 'caspert'),
-        'after' => '</div>',
-        'link_before' => '<span class="page-number">',
-        'link_after' => '</span>',
+            'before' => '<div class="page-links">' . esc_html__('Trang:', 'caspert'),
+            'after' => '</div>',
+            'link_before' => '<span class="page-number">',
+            'link_after' => '</span>',
     ));
 }
 
@@ -263,8 +267,8 @@ function caspert_get_form_cf7(): array
     if (function_exists('wpcf7')) {
 
         $wpcf7_form_list = get_posts(array(
-            'post_type' => 'wpcf7_contact_form',
-            'numberposts' => -1,
+                'post_type' => 'wpcf7_contact_form',
+                'numberposts' => -1,
         ));
 
         $options[0] = esc_html__('Chọn một mẫu liên hệ', 'caspert');
@@ -307,11 +311,9 @@ function caspert_get_social_url(): void
                 continue;
             }
             ?>
-            <div class="social-network-item">
-                <a href="<?php echo esc_url($item['url']); ?>" target="_blank">
-                    <i class="icon-theme-mask icon-theme-mask-<?php echo esc_attr($network); ?>"></i>
-                </a>
-            </div>
+            <a href="<?php echo esc_url($item['url']); ?>" target="_blank">
+                <i class="ex-<?php echo esc_attr($network); ?>"></i>
+            </a>
         <?php
 
         endforeach;
@@ -334,7 +336,7 @@ function caspert_preg_replace_ony_number($string): string|null
 function caspert_get_all_categories(): array
 {
     $categories = get_categories(array(
-        'hide_empty' => 0,
+            'hide_empty' => 0,
     ));
 
     $categories_list = array();
