@@ -4,6 +4,7 @@ namespace ExtendSite\Core;
 
 use ExtendSite\Admin\AdminManager\AdminManager;
 use ExtendSite\Admin\AdminManager\Modules\BreadcrumbAdmin;
+use ExtendSite\Admin\Fields\Pages\PageFieldsManager;
 use ExtendSite\Admin\Options\ThemeOptions;
 use ExtendSite\Constants\Config;
 use ExtendSite\Core\Breadcrumb\BreadcrumbService;
@@ -24,6 +25,9 @@ class Plugin
 
         // Load Carbon Fields
         CarbonLoader::boot();
+
+        // Load Page Fields
+        PageFieldsManager::boot();
 
         // Load Carbon Fields theme options
         ThemeOptions::boot();
