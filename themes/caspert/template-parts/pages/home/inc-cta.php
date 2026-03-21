@@ -1,34 +1,60 @@
+<?php
+
+use ExtendSite\Admin\Fields\Pages\Home\HomeCtaTab;
+
+$data = caspert_get_field_tab_data(HomeCtaTab::class);
+
+if (empty($data['items'])) return;
+
+$base_delay = 0.2;
+?>
+
 <section class="section sec-homeCta">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="ctaBox wow fadeInUp">
-                    <div class="ctaBox__bg">
-                        <img src="assets/img/ctaBox-bg-1.jpg" alt="">
-                    </div>
-                    <div class="ctaBox__inner">
-                        <h3 class="ctaBox__title"><a href="#">Đăng ký bảo hành điện tử</a></h3>
-                        <p class="catBox__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
-                        <div class="ctaBox__btn">
-                            <a href="dangkybaohanh.html" class="btn-link">ĐĂNG KÝ NGAY <span><i class="ex-arrow-circle-left"></i></span></a>
+            <?php foreach ($data['items'] as $index => $item) :
+
+                $delay = number_format($index * $base_delay, 1);
+                ?>
+
+                <div class="col-md-6">
+                    <div class="ctaBox wow fadeInUp"
+                         data-wow-delay="<?php echo esc_attr($delay . 's'); ?>">
+
+                        <?php if (!empty($item['image'])) : ?>
+                            <div class="ctaBox__bg">
+                                <img src="<?php echo esc_url($item['image']); ?>"
+                                    alt="<?php echo esc_attr($item['title']); ?>">
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="ctaBox__inner">
+                            <?php if (!empty($item['title'])) : ?>
+                                <h3 class="ctaBox__title">
+                                    <a href="<?php echo esc_url($item['button']['link']); ?>">
+                                        <?php echo esc_html($item['title']); ?>
+                                    </a>
+                                </h3>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item['description'])) : ?>
+                                <p class="catBox__text">
+                                    <?php echo esc_html($item['description']); ?>
+                                </p>
+                            <?php endif; ?>
+
+                            <?php if (!empty($item['button']['text']) && !empty($item['button']['link'])) : ?>
+                                <div class="ctaBox__btn">
+                                    <a href="<?php echo esc_url($item['button']['link']); ?>" class="btn-link">
+                                        <?php echo esc_html($item['button']['text']); ?>
+                                        <span><i class="ex-arrow-circle-left"></i></span>
+                                    </a>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="ctaBox wow fadeInUp" data-md-wow-delay=".2s" data-xl-wow-delay=".2s">
-                    <div class="ctaBox__bg">
-                        <img src="assets/img/ctaBox-bg-2.jpg" alt="">
-                    </div>
-                    <div class="ctaBox__inner">
-                        <h3 class="ctaBox__title"><a href="#">Giải pháp không khí lạnh châu âu</a></h3>
-                        <p class="catBox__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
-                        <div class="ctaBox__btn">
-                            <a href="tintuc-detail.html" class="btn-link">XEM THÊM <span><i class="ex-arrow-circle-left"></i></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
