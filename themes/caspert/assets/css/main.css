@@ -7694,11 +7694,13 @@ textarea {
     display: none;
 }
 
-.checkbox input:checked ~ .checkbox__box {
+.checkbox input:checked ~ .checkbox__box,
+.wpcf7 .form-checkList input[type="checkbox"]:checked ~ .wpcf7-list-item-label .checkbox__box {
     background-color: var(--color-primary);
 }
 
-.checkbox input:checked ~ .checkbox__box:after {
+.checkbox input:checked ~ .checkbox__box:after,
+.wpcf7 .form-checkList input[type="checkbox"]:checked ~ .wpcf7-list-item-label .checkbox__box:after {
     opacity: 1;
     visibility: visible;
 }
@@ -7706,8 +7708,8 @@ textarea {
 .checkbox .checkbox__box {
     display: block;
     position: relative;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 18px;
+    height: 18px;
     border-radius: 0.125rem;
     border: 1px solid #7B8A9C;
 }
@@ -7807,14 +7809,15 @@ textarea {
     padding-left: 1.875rem;
 }
 
-.form-checkList li + li {
-    margin-top: 0.625rem;
-}
-
-.form-checkList li .checkbox {
+.form-checkList li .checkbox,
+.wpcf7 .checkbox .checkbox__box {
     position: absolute;
     left: 0;
     top: 0;
+}
+
+.form-checkList li + li {
+    margin-top: 0.625rem;
 }
 
 .form-checkList li p {
@@ -15443,6 +15446,7 @@ textarea {
 
 .header__logo a img {
     width: 100%;
+    height: auto;
 }
 
 .header__fixGrow {
@@ -16960,13 +16964,16 @@ textarea {
     -ms-flex-align: center;
     align-items: center;
     height: 3.625rem;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.sec-chinhsachHead ul li span {
-    width: 1.5625rem;
-    line-height: 1;
-    margin-right: 0.5rem;
-}
+/*.sec-chinhsachHead ul li span {*/
+/*    width: 1.5625rem;*/
+/*    line-height: 1;*/
+/*    margin-right: 0.5rem;*/
+/*}*/
 
 .sec-chinhsachHead ul li p {
     font-size: 0.75rem;
@@ -16991,9 +16998,9 @@ textarea {
         height: 3.125rem;
     }
 
-    .sec-chinhsachHead .f-inner ul li span {
-        width: 1.25rem;
-    }
+    /*.sec-chinhsachHead .f-inner ul li span {*/
+    /*    width: 1.25rem;*/
+    /*}*/
 
     .sec-chinhsachHead .f-inner ul li p {
         font-size: 0.625rem;
@@ -17018,10 +17025,10 @@ textarea {
         height: 3.625rem;
     }
 
-    .sec-chinhsachHead .f-inner ul li span {
-        width: 2rem;
-        margin-right: 0.5rem;
-    }
+    /*.sec-chinhsachHead .f-inner ul li span {*/
+    /*    width: 2rem;*/
+    /*    margin-right: 0.5rem;*/
+    /*}*/
 
     .sec-chinhsachHead .f-inner ul li p {
         font-size: 0.875rem;
@@ -19885,4 +19892,40 @@ textarea {
 
 .sec-sanphanRalate .item-foot {
     margin-top: 2.5rem;
+}
+
+/*contact form 7*/
+.wpcf7 br {
+    display: none;
+}
+
+.wpcf7 p:last-child {
+    margin-bottom: 0;
+}
+
+.wpcf7 .wpcf7-list-item {
+    margin: 0;
+}
+
+.wpcf7 .wpcf7-list-item-label {
+    position: relative;
+    padding-top: 2px;
+    padding-left: 28px;
+}
+
+.wpcf7 .form-checkList .checkbox p {
+    margin-bottom: 0;
+    color: var(--color-primary);
+}
+
+.wpcf7 .form-btn {
+    position: relative;
+}
+
+.wpcf7 .form-btn .wpcf7-spinner {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
 }

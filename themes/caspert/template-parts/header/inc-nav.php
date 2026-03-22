@@ -1,3 +1,9 @@
+<?php
+
+use ExtendSite\Admin\Options\Modules\GeneralOptions;
+
+$logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
+?>
 <header class="header">
     <div class="header__wrap">
         <div class="header__content">
@@ -17,8 +23,17 @@
                 <div class="container">
                     <div class="header__group">
                         <div class="header__logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo.png" alt="">
+                            <a href="<?php echo esc_url( get_home_url( '/' ) ); ?>">
+                                <?php
+                                if ( ! empty( $logo ) ) :
+                                    echo wp_get_attachment_image( $logo, 'medium' );
+                                else :
+                                    ?>
+                                    <img class="logo-default"
+                                         src="<?php echo esc_url( get_theme_file_uri( '/assets/images/logo.png' ) ) ?>"
+                                         alt="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>" width="64" height="64"/>
+
+                                <?php endif; ?>
                             </a>
                         </div>
 

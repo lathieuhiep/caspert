@@ -60,14 +60,14 @@ class ESHelpers
                 'numberposts' => -1,
             ));
 
-            $options[0] = esc_html__('Select a Contact Form', 'extend-site');
+            $options[0] = esc_html__('-- Chọn form --', 'extend-site');
 
             if (!empty($wpcf7_form_list) && !is_wp_error($wpcf7_form_list)) :
                 foreach ($wpcf7_form_list as $item) :
                     $options[$item->ID] = $item->post_title;
                 endforeach;
             else :
-                $options[0] = esc_html__('Create a Form First', 'extend-site');
+                $options[0] = esc_html__('Tạo form liên hệ', 'extend-site');
             endif;
         }
 

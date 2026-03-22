@@ -1,3 +1,9 @@
+    <?php
+    if ( !is_404() ) :
+        get_template_part('template-parts/components/inc', 'contact-us');
+    endif;
+    ?>
+
     </main><!-- close .page-content -->
 
     <?php

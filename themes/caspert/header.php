@@ -19,3 +19,8 @@
     ?>
     <!-- open .page-content -->
     <main class="page-content">
+        <?php
+        if ( !is_404() ) :
+            get_template_part('template-parts/components/inc', 'policy');
+        endif;
+        ?>
