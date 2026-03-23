@@ -140,15 +140,8 @@ $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
                         </div>
 
                         <div class="header__right">
-                            <div class="header__lang" data-dropdown>
-                                <div class="f-btn" data-dropdownTrigger>
-                                    <img src="assets/img/vn.jpg" alt="">
-                                    <span>Tiếng Việt</span>
-                                </div>
-                                <div class="f-content" data-dropdownContent>
-                                    <a href="#"><img src="assets/img/en.jpg" alt="">Tiếng Anh</a>
-                                </div>
-                            </div>
+                            <?php get_template_part('template-parts/header/parts/inc', 'lang-switcher'); ?>
+
                             <div class="header__humberger d-xl-none">
                                 <span class="t-1"></span>
                                 <span class="t-2"></span>

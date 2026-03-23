@@ -22,7 +22,7 @@ class PageFieldsManager {
     public static function register(): void
     {
         HomeFields::register();
-        // ContactFields::register();
+        ProductSeriesFields::register();
         // LandingFields::register();
     }
 }

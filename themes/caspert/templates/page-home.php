@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Home Page
+ * Template Name: Trang Chủ
  * Template Post Type: page
  */
 
