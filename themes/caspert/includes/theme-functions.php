@@ -346,3 +346,11 @@ function caspert_get_all_categories(): array
 
     return $categories_list;
 }
+
+// get page url by slug
+function caspert_get_page_url(string $slug): string
+{
+    $page = get_page_by_path($slug);
+
+    return $page ? get_permalink($page) : '';
+}

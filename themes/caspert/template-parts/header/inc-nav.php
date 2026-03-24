@@ -3,6 +3,10 @@
 use ExtendSite\Admin\Options\Modules\GeneralOptions;
 
 $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
+
+// get url page
+$productListUrl = caspert_get_page_url('dong-san-pham');
+$warrantyUrl = caspert_get_page_url('bao-hanh');
 ?>
 <header class="header">
     <div class="header__wrap">
@@ -41,9 +45,9 @@ $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
                             <div class="header__list">
                                 <ul>
                                     <li class="menu-has-children">
-                                        <a href="dongsanpham.html" class="current link-meta" data-target="menu-clothes">Điều hòa</a>
+                                        <a href="<?php echo esc_url( $productListUrl ); ?>" class="current link-meta" data-target="menu-clothes">Điều hòa</a>
                                     </li>
-                                    <li><a href="baohanh.html">Bảo hành</a></li>
+                                    <li><a href="<?php echo esc_url( $warrantyUrl ); ?>">Bảo hành</a></li>
                                     <li><a href="tintuc.html">Blog</a></li>
                                     <li><a href="lienhe.html">Liên hệ</a></li>
                                 </ul>
@@ -157,9 +161,9 @@ $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
                             <div class="mega-item">
                                 <h3 class="mega-title">Dòng sản phẩm</h3>
                                 <ul class="mega-list">
-                                    <li><a href="dongsanpham.html">Ultimate Comfort Series</a></li>
-                                    <li><a href="dongsanpham.html">Điều hòa Inverter</a></li>
-                                    <li><a href="dongsanpham.html">Điều hòa tiêu chuẩn</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Ultimate Comfort Series</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Điều hòa Inverter</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Điều hòa tiêu chuẩn</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -169,9 +173,9 @@ $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
                             <div class="mega-item">
                                 <h3 class="mega-title">Dòng sản phẩm</h3>
                                 <ul class="mega-list">
-                                    <li><a href="dongsanpham.html">Ultimate Comfort Series</a></li>
-                                    <li><a href="dongsanpham.html">Điều hòa Inverter</a></li>
-                                    <li><a href="dongsanpham.html">Điều hòa tiêu chuẩn</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Ultimate Comfort Series</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Điều hòa Inverter</a></li>
+                                    <li><a href="<?php echo esc_url( $productListUrl ); ?>">Điều hòa tiêu chuẩn</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 namespace ExtendSite\Admin\Fields\Pages;
 
 use Carbon_Fields\Container;
+use ExtendSite\Admin\Fields\Pages\ProductSeries\ProductRelatedTab;
 use ExtendSite\Admin\Fields\Pages\ProductSeries\ProductSeriesFeatureTab;
 use ExtendSite\Admin\Fields\Pages\ProductSeries\ProductSeriesHeroTab;
 use ExtendSite\Admin\Fields\Pages\ProductSeries\ProductSeriesIntroTab;
@@ -24,6 +25,9 @@ class ProductSeriesFields {
             )->add_tab(
                 esc_html__('Thông tin nổi bật', 'extend-site'),
                 ProductSeriesFeatureTab::fields()
+            )->add_tab(
+                esc_html__('Sản phẩm liên quan', 'extend-site'),
+                ProductRelatedTab::fields()
             );
     }
 }
