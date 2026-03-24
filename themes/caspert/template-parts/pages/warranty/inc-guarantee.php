@@ -99,7 +99,7 @@
         <div class="row">
             <div class="col-xl-6">
                 <div class="f-img wow fadeInUp">
-                    <img src="assets/img/CSBaoHanh-img-1.jpg" alt="">
+                    <img src="<?php echo esc_url(get_theme_file_uri('/assets/img/CSBaoHanh-img-1.jpg')) ?>" alt="">
                 </div>
             </div>
             <div class="col-xl-6">

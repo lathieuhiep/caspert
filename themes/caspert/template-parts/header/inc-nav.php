@@ -7,6 +7,8 @@ $logo = caspert_opt(GeneralOptions::class)::get_logo_id() ?? '';
 // get url page
 $productListUrl = caspert_get_page_url('dong-san-pham');
 $warrantyUrl = caspert_get_page_url('bao-hanh');
+$newUrl = caspert_get_page_url('blog');
+$contactUrl = caspert_get_page_url('lien-he');
 ?>
 <header class="header">
     <div class="header__wrap">
@@ -48,8 +50,8 @@ $warrantyUrl = caspert_get_page_url('bao-hanh');
                                         <a href="<?php echo esc_url( $productListUrl ); ?>" class="current link-meta" data-target="menu-clothes">Điều hòa</a>
                                     </li>
                                     <li><a href="<?php echo esc_url( $warrantyUrl ); ?>">Bảo hành</a></li>
-                                    <li><a href="tintuc.html">Blog</a></li>
-                                    <li><a href="lienhe.html">Liên hệ</a></li>
+                                    <li><a href="<?php echo esc_url( $newUrl ); ?>">Blog</a></li>
+                                    <li><a href="<?php echo esc_url( $contactUrl ); ?>">Liên hệ</a></li>
                                 </ul>
                             </div>
                             <div class="header__searchBtn">
