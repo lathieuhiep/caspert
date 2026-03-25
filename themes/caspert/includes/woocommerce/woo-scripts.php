@@ -11,7 +11,7 @@ function caspert_register_front_end_woo(): void
 
     // include css product archive
     if (is_shop() || is_product_category() || is_product_tag()) {
-        wp_enqueue_style('woo-archive', get_theme_file_uri('/includes/woocommerce/assets/css/woo-archive.min.css'), array(), caspert_get_version_theme());
+        wp_enqueue_style('woo-archive', get_theme_file_uri('/includes/woocommerce/assets/css/woo-archive.css'), array(), caspert_get_version_theme());
     }
 
     // include css product single
@@ -45,16 +45,5 @@ function caspert_register_front_end_woo(): void
             caspert_get_version_theme(),
             true
         );
-    }
-
-    // include script page shop, taxonomy, product
-    if ( is_shop() || is_product_category() || is_product_tag() || is_product() ) {
-        // js
-        wp_enqueue_script('woo-archive',
-            get_theme_file_uri('/includes/woocommerce/assets/js/woo-archive.min.js'),
-            array('jquery', 'wc-add-to-cart-variation'),
-            caspert_get_version_theme(),
-            true);
-        wp_localize_script('woo-archive', 'woo_quick_view_product', $theme_woo_admin_ajax_url);
     }
 }

@@ -8,7 +8,6 @@
  * Layout
  *
  * @see caspert_get_cart()
- * @see caspert_button_quick_view()
  * @see caspert_woo_before_main_content()
  * @see caspert_woo_before_shop_loop_open()
  * @see caspert_woo_before_shop_loop_close()
@@ -22,10 +21,10 @@
  * @see caspert_woo_loop_add_to_cart_close()
  * @see caspert_woo_get_sidebar()
  * @see caspert_woo_after_main_content()
- * @see caspert_popup_quick_view_product()
  */
 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
+remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
 
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
@@ -37,8 +36,6 @@ remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_pr
 remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
 add_action( 'caspert_woo_shopping_cart', 'caspert_get_cart', 5 );
-
-add_action( 'caspert_woo_button_quick_view', 'caspert_button_quick_view', 5 );
 
 add_action( 'woocommerce_before_main_content', 'caspert_woo_before_main_content', 10 );
 
@@ -61,8 +58,6 @@ add_action ( 'woocommerce_after_shop_loop_item', 'caspert_woo_after_shop_loop_it
 add_action( 'caspert_woo_sidebar', 'caspert_woo_get_sidebar', 10 );
 
 add_action( 'woocommerce_after_main_content', 'caspert_woo_after_main_content', 10 );
-
-add_action( 'woocommerce_after_main_content', 'caspert_popup_quick_view_product', 12 );
 
 /**
  * Single Product

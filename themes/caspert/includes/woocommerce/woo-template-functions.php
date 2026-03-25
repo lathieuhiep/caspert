@@ -165,19 +165,17 @@ if (!function_exists('caspert_woo_get_sidebar')) :
     function caspert_woo_get_sidebar(): void
     {
         $sidebar = caspert_woo_get_sidebar_active();
-
-        if (!empty($sidebar) && $sidebar['position'] != THEME_SIDEBAR_POSITION_HIDDEN && is_active_sidebar($sidebar['active'])):
             if ($sidebar['position'] == THEME_SIDEBAR_POSITION_LEFT) :
                 $class_order = 'order-md-1';
             else:
                 $class_order = 'order-md-2';
             endif;
             ?>
-            <aside class="col-12 col-md-4 col-lg-3 order-2 <?php echo esc_attr($class_order); ?>">
-                <?php dynamic_sidebar($sidebar['active']); ?>
+            <aside class="col-md-4 col-xl-3 <?php echo esc_attr($class_order); ?>">
+                <?php get_template_part('includes/woocommerce/parts/inc', 'filter-sidebar'); ?>
             </aside>
         <?php
-        endif;
+
     }
 endif;
 /* End Sidebar Shop */
@@ -194,10 +192,17 @@ if (!function_exists('caspert_woo_before_main_content')) :
     function caspert_woo_before_main_content(): void
     {
         $sidebar = caspert_woo_get_sidebar_active();
+
+        get_template_part('template-parts/components/inc', 'breadcrumbs');
+        get_template_part('includes/woocommerce/parts/inc', 'shop-hero');
         ?>
-        <div class="site-shop">
-        <div class="container">
-        <div class="row">
+        <div class="site-shop section sec-sanphamList">
+            <div class="filter-blocks">
+                <?php get_template_part('includes/woocommerce/parts/inc', 'filter-menu'); ?>
+
+                <div class="product-listWrap">
+                    <div class="container">
+                        <div class="row">
 
         <?php
         /**
@@ -207,7 +212,7 @@ if (!function_exists('caspert_woo_before_main_content')) :
          */
         do_action('caspert_woo_sidebar');
         ?>
-        <div class="<?php echo !empty($sidebar) && is_active_sidebar($sidebar['active']) && $sidebar['position'] != THEME_SIDEBAR_POSITION_HIDDEN ? 'col-12 col-md-8 col-lg-9 order-1 has-sidebar' : 'col-md-12'; ?>">
+        <div class="col-md-8 col-xl-9 order-1 has-sidebar">
 
         <?php
 
@@ -222,10 +227,12 @@ if (!function_exists('caspert_woo_after_main_content')) :
      */
     function caspert_woo_after_main_content(): void
     {
-        ?>
-        </div><!-- .col-md-9 -->
-        </div><!-- .row -->
-        </div><!-- .container -->
+            ?>
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div><!-- .container -->
+                </div><!-- .product-listWrap -->
+            </div><!-- .filter-blocks -->
         </div><!-- .site-shop -->
         <?php
     }
@@ -259,7 +266,6 @@ if (!function_exists('caspert_woo_product_thumbnail_close')) :
 
     function caspert_woo_product_thumbnail_close(): void
     {
-        do_action('caspert_woo_button_quick_view');
         ?>
         </div><!-- .item__image -->
 
@@ -374,9 +380,8 @@ if (!function_exists('caspert_woo_before_shop_loop_open')) :
      */
     function caspert_woo_before_shop_loop_open(): void
     {
-
-        ?>
-        <div class="site-shop__result-count-ordering d-flex align-items-center justify-content-between">
+    ?>
+        <div class="site-shop__result-count-ordering filter-resultShort-head wow fadeInUp effect done d-flex align-items-center justify-content-between">
         <?php
 
     }
