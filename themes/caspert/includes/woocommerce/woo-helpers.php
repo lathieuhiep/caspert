@@ -3,12 +3,14 @@
 use ExtendSite\Admin\Options\Modules\WooOptions;
 use ExtendSite\Admin\Options\Modules\WooSingleOptions;
 
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
+
 function caspert_shop_setup(): void
 {
     add_theme_support('woocommerce');
-    add_theme_support('wc-product-gallery-zoom');
-    add_theme_support('wc-product-gallery-lightbox');
-    add_theme_support('wc-product-gallery-slider');
+//    add_theme_support('wc-product-gallery-zoom');
+//    add_theme_support('wc-product-gallery-lightbox');
+//    add_theme_support('wc-product-gallery-slider');
 }
 add_action('after_setup_theme', 'caspert_shop_setup');
 
@@ -27,9 +29,17 @@ function caspert_woo_override_product_list_class($html): array|string
     $html = preg_replace('/columns-\d+/', '', $html);
 
     // add class custom
-    return str_replace('class="products', 'class="products gap-6 ' . $per_row_classes, $html);
+    return str_replace('class="products', 'class="products row ' . $per_row_classes, $html);
 }
 add_filter('woocommerce_product_loop_start', 'caspert_woo_override_product_list_class', 20, 1);
+
+// add class product item
+add_filter('woocommerce_post_class', function ($classes, $product) {
+    // thêm class custom
+    $classes[] = 'col';
+
+    return $classes;
+}, 10, 2);
 
 // limit product
 function caspert_show_products_per_page()

@@ -31,15 +31,33 @@ class ProductMeta implements FieldTabIF
         ];
     }
 
+    // get product is hot
+    public static function get_is_hot(int $post_id): string
+    {
+        return carbon_get_post_meta($post_id, self::IS_HOT);
+    }
+
+    // get product is new
+    public static function get_is_new(int $post_id): string
+    {
+        return carbon_get_post_meta($post_id, self::IS_NEW);
+    }
+
+    // get product secondary image
+    public static function get_secondary_image(int $post_id): int
+    {
+        return (int) carbon_get_post_meta($post_id, self::SECONDARY_IMAGE);
+    }
+
     /**
      * get data fields
      */
     public static function get_data(int $post_id): array
     {
         return [
-            'is_hot' => carbon_get_post_meta($post_id, self::IS_HOT),
-            'is_new' => carbon_get_post_meta($post_id, self::IS_NEW),
-            'secondary_image' => (int) carbon_get_post_meta($post_id, self::SECONDARY_IMAGE),
+            'is_hot' => self::get_is_hot($post_id),
+            'is_new' => self::get_is_new($post_id),
+            'secondary_image' => self::get_secondary_image($post_id),
         ];
     }
 }

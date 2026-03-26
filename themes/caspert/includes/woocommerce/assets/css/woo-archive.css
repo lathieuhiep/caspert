@@ -5,9 +5,44 @@
   display: none;
 }
 
+.woocommerce ul.products {
+  list-style: none;
+  padding: 0;
+}
+
 .filter-resultShort-head .woocommerce-result-count,
 .filter-resultShort-head .woocommerce-ordering {
   margin: 0;
 }
 
-.filter-resultShort-head .woocommerce-ordering {}
+.productBox__info ul {
+  list-style: disc;
+}
+
+.woocommerce ul.products .productBox__inner .price {
+  display: block;
+  font-family: ElectroluxSansVN-D, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-top: 0.625rem;
+}
+
+.woocommerce ul.products .productBox__inner .price bdi {
+  display: flex;
+  gap: 6px;
+}
+
+@media (min-width: 1200px) {
+  .woocommerce ul.products .productBox__inner .price {
+    font-size: 1.5rem;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .woocommerce ul.products .productBox__inner .price {
+    font-size: 1.375rem;
+    margin-top: 0.9375rem;
+  }
+}

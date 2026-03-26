@@ -233,6 +233,11 @@ if (!function_exists('caspert_woo_after_main_content')) :
                     </div><!-- .container -->
                 </div><!-- .product-listWrap -->
             </div><!-- .filter-blocks -->
+            <?php
+            if (is_shop()) {
+                get_template_part('includes/woocommerce/parts/inc', 'shop-info');
+            }
+            ?>
         </div><!-- .site-shop -->
         <?php
     }
@@ -250,7 +255,7 @@ if (!function_exists('caspert_woo_product_thumbnail_open')) :
     {
 
         ?>
-        <div class="item__image">
+        <div class="item__image productBox__img">
         <?php
 
     }
@@ -269,7 +274,7 @@ if (!function_exists('caspert_woo_product_thumbnail_close')) :
         ?>
         </div><!-- .item__image -->
 
-        <div class="item__content">
+        <div class="item__content productBox__title">
         <?php
     }
 endif;
@@ -283,12 +288,15 @@ if (!function_exists('caspert_woo_get_product_title')) :
 
     function caspert_woo_get_product_title(): void
     {
+        $product = wc_get_product(get_the_ID());
+        $sku = $product ? $product->get_sku() : '';
         ?>
-        <h2 class="woocommerce-loop-product__title">
+        <p class="f-masp"><?php echo esc_html( $sku ); ?></p>
+        <h3 class="f-tensp">
             <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
                 <?php the_title(); ?>
             </a>
-        </h2>
+        </h3>
         <?php
     }
 endif;
@@ -303,6 +311,21 @@ if (!function_exists('caspert_woo_after_shop_loop_item_title')) :
     {
         ?>
         </div><!-- .item__content -->
+
+        <div class="productBox__info">
+            <?php the_content(); ?>
+        </div>
+
+        <div class="productBox__tragop">
+            <div class="f-left">
+                Lãi suất
+                <strong>0%</strong>
+            </div>
+            <div class="f-right">
+                <h4>1.998.333 <small> ₫/tháng</small></h4>
+                <p>trong 6 tháng</p>
+            </div>
+        </div>
         <?php
     }
 endif;
@@ -317,7 +340,8 @@ if (!function_exists('caspert_woo_loop_add_to_cart_open')) :
     function caspert_woo_loop_add_to_cart_open(): void
     {
         ?>
-        <div class="item__action">
+        <div class="item__action productBox__btn">
+            <a href="<?php the_permalink(); ?>" class="btn btn--block btn--sm">TÌM HIỂU THÊM</a>
         <?php
     }
 
@@ -349,8 +373,11 @@ if (!function_exists('caspert_woo_before_shop_loop_item')) :
     {
         ?>
 
-        <div class="item">
-
+        <div class="item productBox wow fadeInUp">
+            <div class="productBox__inner">
+                <div class="product-label">
+                    <span class="label-hot">Hot</span>
+                </div>
         <?php
     }
 endif;
@@ -364,7 +391,7 @@ if (!function_exists('caspert_woo_after_shop_loop_item')) :
     function caspert_woo_after_shop_loop_item(): void
     {
         ?>
-
+            </div><!-- productBox__inner -->
         </div><!-- .item -->
 
         <?php

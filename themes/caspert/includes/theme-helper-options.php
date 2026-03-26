@@ -19,7 +19,7 @@ function caspert_get_responsive_row_class($per_row): string
     }
 
     return sprintf(
-        'theme-row-cols-1 theme-row-cols-sm-%s theme-row-cols-md-%s theme-row-cols-lg-%s theme-row-cols-xl-%s',
+        'row-cols-1 row-cols-sm-%s row-cols-md-%s row-cols-lg-%s row-cols-xl-%s',
         $per_row['sm'],
         $per_row['md'],
         $per_row['lg'],
